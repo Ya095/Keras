@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a06e5d8a-6b5e-4a6e-ba7b-6edd9071c190" name="Changes" comment="add VAE#1">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VAE.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/VAE.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="a06e5d8a-6b5e-4a6e-ba7b-6edd9071c190" name="Changes" comment="CVAE + fix VAE" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687885328464</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CVAE + fix VAE">
+      <created>1688031709485</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688031709485</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,7 +111,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -116,6 +132,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="del import" />
     <MESSAGE value="add VAE#1" />
-    <option name="LAST_COMMIT_MESSAGE" value="add VAE#1" />
+    <MESSAGE value="CVAE + fix VAE" />
+    <option name="LAST_COMMIT_MESSAGE" value="CVAE + fix VAE" />
   </component>
 </project>
