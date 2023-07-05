@@ -22,8 +22,10 @@ from keras.layers import Conv2D, LeakyReLU
 x_train = x_train[y_train == 7]
 y_train = y_train[y_train == 7]
 
-BUFFER_SIZE = x_train.shape[0]
+BUFFER_SIZE = x_train.shape[0] # сколько получилось данных (размер буфера)
 BATCH_SIZE = 100
+
+# должна быть кратна BATCH_SIZE
 length = BUFFER_SIZE // BATCH_SIZE * BATCH_SIZE
 
 x_train = x_train[:length]
@@ -36,6 +38,7 @@ x_test = x_test / 255
 x_train = np.reshape(x_train, (len(x_train), 28, 28, 1))
 x_test = np.reshape(x_test, (len(x_test), 28, 28, 1))
 
+# делим обучающую выборку на батчи и перемешиваем
 train_dataset = tf.data.Dataset.from_tensor_slices(x_train).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
 
 
@@ -111,6 +114,7 @@ discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
 
 
 """ Обучение """
+# функция одного шага обучения
 @tf.function
 def trainStep(images):
     with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
@@ -131,6 +135,7 @@ def trainStep(images):
     return gen_loss, disc_loss
 
 
+# функция, запускающая весь процесс обучения
 def train(dataset, epochs):
     history = []
     MAX_PRINT_LABEL = 10
@@ -144,6 +149,7 @@ def train(dataset, epochs):
         n = 0
         gen_loss_epoch = 0
 
+        # пропускаем каждый батч через НС и считаем потери
         for image_batch in dataset:
             gen_loss, disc_loss = trainStep(image_batch)
             gen_loss_epoch += K.mean(gen_loss)
