@@ -33,7 +33,6 @@ class DenseNN(tf.Module):
             self.b = tf.Variable(self.b)
             self.fl_flag = True
 
-
         y = x @ self.w + self.b
 
         if self.activate == 'relu':
