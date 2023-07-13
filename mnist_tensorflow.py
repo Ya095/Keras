@@ -63,15 +63,20 @@ epochs = 10
 total = x_train.shape[0]
 train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train)).shuffle(buffer_size=1024).batch(batch_size)
 
+@tf.function
+def trainBatch(x_batch, y_batch):
+    with tf.GradientTape() as tape:
+        f_loss = cross_entropy(y_batch, model(x_batch))
+
+    grads = tape.gradient(f_loss, model.trainable_variables)
+    opt.apply_gradients(zip(grads, model.trainable_variables))
+    return f_loss
+
+
 for n in range(epochs):
     loss = 0
     for x_batch, y_batch in train_dataset:
-        with tf.GradientTape() as tape:
-            f_loss = cross_entropy(y_batch, model(x_batch))
-
-        loss += f_loss
-        grads = tape.gradient(f_loss, model.trainable_variables)
-        opt.apply_gradients(zip(grads, model.trainable_variables))
+       loss += trainBatch(x_batch, y_batch)
 
     print(f'loss = %.2f' % loss.numpy())
 
