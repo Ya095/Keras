@@ -22,7 +22,7 @@ model.add(Dense(1))
 
 # компиляция и обучение модели
 model.compile(loss='mse', optimizer='adam', metrics=['mae'])
-his = model.fit(x_train, y_train, batch_size=1, epochs=80)
+hist = model.fit(x_train, y_train, batch_size=1, epochs=80)
 
 model.evaluate(x_test, y_test) # [13.9684 - mae: 2.4350]
 pred = model.predict(x_test)
@@ -32,8 +32,8 @@ print(pred[1], y_test[1])
 print(pred[50], y_test[50])
 print(pred[100], y_test[100])
 
-plt.plot(his.history['loss'], label='loss')
-plt.plot(his.history['val_loss'], label='val_loss')
+plt.plot(hist.history['loss'], label='loss')
+plt.plot(hist.history['val_loss'], label='val_loss')
 plt.yscale('log')
 plt.legend()
 plt.show()
